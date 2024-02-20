@@ -1,7 +1,7 @@
 name: sms_otp_autofill
 description: OTP Auto fill Support for Android Version 10 to 14.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/TamilSelvanRaja/flutter_sms_otp_autofill.git
 
 environment:
   sdk: ^3.2.6
