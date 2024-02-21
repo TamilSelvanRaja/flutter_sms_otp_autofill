@@ -1,6 +1,6 @@
 name: sms_otp_autofill
-description: OTP Auto fill Support for Android Version 10 to 14.
-version: 1.0.0
+description: SMS OTP Auto Fill is a Flutter package designed to simplify the process of handling OTP received via SMS.
+version: 0.2.0
 repository: https://github.com/TamilSelvanRaja/flutter_sms_otp_autofill.git
 
 environment:

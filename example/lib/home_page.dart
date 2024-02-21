@@ -20,9 +20,6 @@ class _OtpReceiverViewState extends State<OtpReceiverView> with TickerProviderSt
     super.initState();
     telephony.listenIncomingSms(
       onNewMessage: (SmsMessage message) {
-        print(message.address);
-        print(message.body);
-
         String sms = message.body.toString();
         String appName = "SMS_Autofill"; //Replace your App Name
 
@@ -30,7 +27,7 @@ class _OtpReceiverViewState extends State<OtpReceiverView> with TickerProviderSt
           otpcode = sms.replaceAll(RegExp(r'[^0-9]'), '');
           setState(() {});
         } else {
-          print("error");
+          debugPrint("error");
         }
       },
       listenInBackground: false,

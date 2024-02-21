@@ -1,5 +1,3 @@
-// TODO: Put public facing types in this file.
-
 import 'package:telephony/telephony.dart';
 
 /// Checks if you are awesome. Spoiler: you are.
