@@ -37,7 +37,6 @@ This will listen for the SMS with the otp during 5 minutes and when received, au
 For the code to be receive, it need to follow some rules as describe here: https://developers.google.com/identity/sms-retriever/verify
 - Be no longer than 140 bytes
 - Contain a one-time code that the client sends back to your server to complete the verification flow
-- End with an 11-character hash string that identifies your app
 
 One example of SMS would be: 
 ```

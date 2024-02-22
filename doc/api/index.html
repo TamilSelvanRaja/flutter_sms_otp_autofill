@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="generator" content="made with love by dartdoc 7.0.1-wip">
+  <meta name="description" content="sms_otp_autofill API docs, for the Dart programming language.">
+  <title>sms_otp_autofill - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li class="self-crumb">sms_otp_autofill package</li>
+  </ol>
+  <div class="self-name">sms_otp_autofill</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="sms_otp_autofill">sms_otp_autofill</h1>
+<p><a href="https://pub.dartlang.org/packages/sms_autofill"><img src="https://img.shields.io/pub/v/sms_autofill.svg" alt="pub package"></a> Flutter plugin to provide SMS OTP autofill support for Android Version 10 to 14.</p>
+<p>For iOS, this package is not needed as the SMS autofill is provided by default, but not for Android, that's where this package is useful.</p>
+<h2 id="usage">Usage</h2>
+<p>You have one widgets at your disposable for autofill an SMS otp, Text.</p>
+<p>Just before you sent your phone number to the backend, you need to let the plugin know that it needs to listen for the SMS with the otp.</p>
+<p>To do that you need to do:</p>
+<pre class="language-dart"><code class="language-dart"> telephony.listenIncomingSms(
+      onNewMessage: (SmsMessage message) {
+        print(message.address);
+        print(message.body);
+
+        String sms = message.body.toString();
+        String appName = "SMS_Autofill"; //Replace your App Name
+
+        if (message.body!.contains(appName)) {
+          otpcode = sms.replaceAll(RegExp(r'[^0-9]'), '');
+          setState(() {});
+        } else {
+          print("error");
+        }
+      },
+      listenInBackground: false,
+    );
+</code></pre>
+<p>This will listen for the SMS with the otp during 5 minutes and when received, autofill the following widget.</p>
+<h3 id="android-sms-constraint">Android SMS constraint</h3>
+<p>For the code to be receive, it need to follow some rules as describe here: <a href="https://developers.google.com/identity/sms-retriever/verify">https://developers.google.com/identity/sms-retriever/verify</a></p>
+<ul>
+<li>Be no longer than 140 bytes</li>
+<li>Contain a one-time code that the client sends back to your server to complete the verification flow</li>
+</ul>
+<p>One example of SMS would be:</p>
+<pre class="language-dart"><code>AppName: Your code is 123456
+</code></pre>
+<h2 id="helper">Helper</h2>
+<p>Need to Add Permission for (android/app/src/main) AndroidManifest.xml file :</p>
+<pre class="language-xml"><code class="language-xml"> &lt;uses-permission android:name="android.permission.RECEIVE_SMS"/&gt; 
+ &lt;application&gt;
+   &lt;receiver android:name="com.shounakmulay.telephony.sms.IncomingSmsReceiver"
+            android:permission="android.permission.BROADCAST_SMS" android:exported="true"&gt; 
+            &lt;intent-filter&gt; 
+            &lt;action android:name="android.provider.Telephony.SMS_RECEIVED"/&gt; 
+            &lt;/intent-filter&gt; 
+     &lt;/receiver&gt;        
+ &lt;/application&gt;
+</code></pre>
+<p>Need to modify (android/app) build.gradle :</p>
+<pre class="language-gradle"><code class="language-gradle">  defaultConfig {
+     minSdkVersion 23
+  }
+</code></pre>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="sms_otp_autofill">
+  <span class="name"><a href="sms_otp_autofill/sms_otp_autofill-library.html">sms_otp_autofill</a></span> 
+
+</dt>
+<dd>Support for doing something awesome.
+</dd>
+
+        </dl>
+      </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li class="self-crumb">sms_otp_autofill package</li>
+</ol>
+
+
+    <h5 class="hidden-xs"><span class="package-name">sms_otp_autofill</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="sms_otp_autofill/sms_otp_autofill-library.html">sms_otp_autofill</a></li>
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+
+</main>
+
+<footer>
+  <span class="no-break">
+    sms_otp_autofill
+      0.2.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+
