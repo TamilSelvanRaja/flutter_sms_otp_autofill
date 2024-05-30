@@ -1,6 +1,6 @@
 # sms_otp_autofill
 
-[![pub package](https://img.shields.io/pub/v/sms_autofill.svg)](https://pub.dartlang.org/packages/sms_autofill) Flutter plugin to provide SMS OTP autofill support for Android Version 10 to 14. 
+[![pub package](https://img.shields.io/pub/v/flutter_sms_otp_autofill.svg)](https://pub.dartlang.org/packages/sms_autofill) Flutter plugin to provide SMS OTP autofill support for Android Version 10 to 14. 
 
 For iOS, this package is not needed as the SMS autofill is provided by default, but not for Android, that's where this package is useful.
 
